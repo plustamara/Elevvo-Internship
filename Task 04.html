@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Blog</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#111}
+header{background:#c0392b;color:#fff;padding:20px;text-align:center}
+header button{margin:5px;padding:8px 12px;background:#e74c3c;color:#fff;border:none;cursor:pointer;border-radius:5px}
+header input{margin-top:10px;padding:6px 10px;width:200px;border-radius:5px;border:1px solid #aaa}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;padding:20px}
+.card{border:1px solid #ddd;padding:15px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.card img{width:100%;border-radius:6px}
+footer{background:#e74c3c;color:#fff;text-align:center;padding:15px;margin-top:20px}
+@media(max-width:900px){.card{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<h1>My Red Blog</h1>
+<button onclick="filterPosts('all')">All</button>
+<button onclick="filterPosts('travel')">Travel</button>
+<button onclick="filterPosts('food')">Food</button>
+<br>
+<input type="text" id="search" onkeyup="searchPosts()" placeholder="Search posts">
+</header>
+<section class="posts">
+<div class="card travel"><h2>Paris Trip</h2><p>Traveling to Paris</p><small>Jan 2025</small></div>
+<div class="card food"><h2>Pasta Recipe</h2><p>Delicious Italian pasta</p><small>Feb 2025</small></div>
+<div class="card travel"><h2>Beach Day</h2><p>Relaxing by the sea</p><small>Mar 2025</small></div>
+<div class="card food"><h2>Chocolate Cake</h2><p>Easy dessert recipe</p><small>Apr 2025</small></div>
+</section>
+<footer>
+<p>Blog © 2025</p>
+</footer>
+<script>
+function filterPosts(category){
+var cards=document.getElementsByClassName('card');
+for(var i=0;i<cards.length;i++){
+if(category==='all'||cards[i].classList.contains(category)){cards[i].style.display='block'}
+else{cards[i].style.display='none'}
+}}
+function searchPosts(){
+var input=document.getElementById('search').value.toLowerCase();
+var cards=document.getElementsByClassName('card');
+for(var i=0;i<cards.length;i++){
+var title=cards[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+if(title.includes(input)){cards[i].style.display='block'}
+else{cards[i].style.display='none'}
+}}
+</script>
+</body>
+</html>

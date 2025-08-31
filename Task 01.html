@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Library Sidebar</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{margin:0;font-family:Arial,sans-serif;transition:margin-left .3s;}
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100%;background:#1f2937;color:#fff;overflow:auto;transition:transform .3s;}
+.sidebar.closed{transform:translateX(-100%);}
+.sidebar h2{padding:20px;margin:0;font-size:20px;}
+.sidebar a{display:block;color:#cbd5e1;text-decoration:none;padding:12px 20px;}
+.sidebar a:hover{background:#374151;color:#fff;}
+.toggle-btn{position:fixed;top:10px;left:10px;background:#0f1724;color:#fff;border:none;padding:10px 12px;border-radius:6px;cursor:pointer;z-index:1000;}
+.main{margin-left:220px;padding:20px;transition:margin-left .3s;}
+.main.full{margin-left:0;}
+@media(max-width:800px){.main{margin-left:0;}}
+</style>
+</head>
+<body>
+<button id="toggleBtn" class="toggle-btn">☰ Menu</button>
+<aside id="sidebar" class="sidebar">
+<h2>Library</h2>
+<a href="#">Home</a>
+<a href="#">Browse Books</a>
+<a href="#">Contact</a>
+<a href="#">About</a>
+</aside>
+<main id="main" class="main">
+<h1>Welcome to our Library</h1>
+<p>Use the menu to see our features</p>
+</main>
+<script>
+const toggleBtn=document.getElementById('toggleBtn');
+const sidebar=document.getElementById('sidebar');
+const main=document.getElementById('main');
+toggleBtn.onclick=function(){
+sidebar.classList.toggle('closed');
+main.classList.toggle('full');
+}
+</script>
+</body>
+</html>
